@@ -15,5 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //todo IMPLEMENTAR UN RECYCLERVIEW DONDE MUESTRE UNA LISTA INFINITAss
+        //dsdsds
+        //dsds
     }
 }
