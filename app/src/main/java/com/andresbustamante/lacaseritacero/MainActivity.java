@@ -14,6 +14,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //todo IMPLEMENTAR UN RECYCLERVIEW DONDE MUESTRE UNA LISTA INFINITA
+        //todo IMPLEMENTAR UN RECYCLERVIEW DONDE MUESTRE UNA LISTA INFINITAss
     }
 }
