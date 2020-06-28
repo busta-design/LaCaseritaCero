@@ -1,22 +1,30 @@
 package com.andresbustamante.lacaseritacero;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements RecyclerAdapter.ListItemClick{
 
     private RecyclerView mainRecyclerView;
-    ArrayList<String> listaDatos;
-    //private static final int LISTA_NUMEROS = 100;
+    ArrayList<Pojo> listaDatos;
     private Toast toast;
+
+    FloatingActionButton floatingActionButton;
+    private boolean noVolverAMostrar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.L
         mainRecyclerView.setLayoutManager(new LinearLayoutManager(this));// uno de los tres Linear, Grid, StaggeredGrid
         //mainRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        listaDatos = new ArrayList<String>();
+        listaDatos = new ArrayList<Pojo>();
         llenarListaDatos();
 
 
@@ -38,7 +46,50 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.L
         RecyclerAdapter adapter = new RecyclerAdapter(listaDatos, this);
         mainRecyclerView.setAdapter(adapter);
 
-        //debemos agregar la imagen a medias
+        //El boton flotante
+        floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(noVolverAMostrar == false) {
+
+                    //Agregamos una alerta para comprobar si quiere agregar un elemento a su lista
+                    AlertDialog.Builder alerta = new AlertDialog.Builder(MainActivity.this);
+                    //En las alertas se pueden agregar Drawables en lugar de palabras
+                    alerta//.setMessage("¿Desea agregar alimentos a su lista?")
+                            .setCancelable(true)
+                            .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                    //poner el intent
+                                }
+                            })
+                            .setNeutralButton("Si, no volver a preguntar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    noVolverAMostrar = true;
+                                    dialog.cancel();
+                                    //poner el intent y cambiar "noVolverAMostrar" = true
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+
+                                }
+                            });
+                    AlertDialog titulo = alerta.create();
+                    titulo.setTitle("¿Desea agregar alimentos a su lista?");
+                    titulo.show();
+                }else{
+                    //poner el intent
+                }
+
+            }
+        });
+
 
 
 
@@ -57,23 +108,23 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter.L
     }
 
     public void llenarListaDatos() {
-        listaDatos.add("Carne");
-        listaDatos.add("Pollo");
-        listaDatos.add("Tomate");
-        listaDatos.add("Lechuga");
-        listaDatos.add("Apio");
-        listaDatos.add("Chorizo");
-        listaDatos.add("Veterraga");
-        listaDatos.add("Fideo");
-        listaDatos.add("Cerdo");
-        listaDatos.add("Papa");
-        listaDatos.add("Arberja");
-        listaDatos.add("Salchicha");
-        listaDatos.add("Hamburguesa");
-        listaDatos.add("Chuleta");
-        listaDatos.add("Costilla");
-        listaDatos.add("Morron");
-        listaDatos.add("Frijol ");
+        listaDatos.add(new Pojo (getString(R.string.res), "1/4 libra", R.mipmap.carne_de_res));//
+        listaDatos.add(new Pojo (getString(R.string.cerdo), "1/4 arroba", R.mipmap.carne_de_cerdo));
+        listaDatos.add(new Pojo (getString(R.string.pollo), "1/2 kilo", R.mipmap.pollo));
+        listaDatos.add(new Pojo (getString(R.string.pepino), "1/3 libra", R.mipmap.pepino));
+        listaDatos.add(new Pojo (getString(R.string.salchicha), "1/4 arroba", R.mipmap.salchicha));
+        listaDatos.add(new Pojo (getString(R.string.arroz), "1/4 arroba", R.mipmap.arroz));
+        listaDatos.add(new Pojo (getString(R.string.azucar), "1 libra", R.mipmap.azucar));
+        listaDatos.add(new Pojo (getString(R.string.chuleta_de_res), "1/4 kg", R.mipmap.chuleta_de_res));
+        listaDatos.add(new Pojo (getString(R.string.frijol), "1/4 kg", R.mipmap.frijol));
+        listaDatos.add(new Pojo (getString(R.string.papa), "1/4 arroba", R.mipmap.papa));
+        listaDatos.add(new Pojo (getString(R.string.lechuga), "3 arroba", R.mipmap.lechuga));
+        listaDatos.add(new Pojo (getString(R.string.tomate), "4 libra", R.mipmap.tomate));
+        listaDatos.add(new Pojo (getString(R.string.cebolla), "3/5 kg", R.mipmap.cebolla));
+        listaDatos.add(new Pojo (getString(R.string.manzana), "1/4 kg", R.mipmap.manzana));
+
+
+
 
 
     }

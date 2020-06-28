@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">La Caserita</string>
+
+    <!--    Alimentos-->
+    <string name="arroz">Arroz</string>
+    <string name="azucar">Azucar</string>
+    <string name="cerdo">Carne de Cerdo</string>
+    <string name="res">Carne de Res</string>
+    <string name="cebolla">Cebolla</string>
+    <string name="chuleta_de_res">Chuleta de Res</string>
+    <string name="frijol">Frijol</string>
+    <string name="lechuga">Lechuga</string>
+    <string name="manzana">Manzana</string>
+    <string name="papa">Papa</string>
+    <string name="pepino">Pepino</string>
+    <string name="pollo">Pollo</string>
+    <string name="salchicha">Salchicha</string>
+    <string name="tomate">Tomate</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
 </resources>

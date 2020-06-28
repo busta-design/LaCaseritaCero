@@ -13,11 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.NumerosViewHolder>{
-    ArrayList<String> listaDatos;
+    ArrayList<Pojo> listaDatos;
     //private int mainNumeroItems;
     private final ListItemClick listItemClick;
 
-    public RecyclerAdapter(ArrayList<String> listaDatos, ListItemClick listItemClick) {
+    public RecyclerAdapter(ArrayList<Pojo> listaDatos, ListItemClick listItemClick) {
         this.listaDatos = listaDatos;
         this.listItemClick = listItemClick;
     }
@@ -51,7 +51,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Numero
     @Override
     public void onBindViewHolder(@NonNull NumerosViewHolder holder, int position) {
         //Bindear (bind=comportamiento) a cada vista del ViewHolder con los datos
-        holder.bind(listaDatos.get(position));
+        holder.textViewListaNumeros.setText(listaDatos.get(position).getText());
+        holder.textViewCantidad.setText(listaDatos.get(position).getCantidad());
+        holder.imageView.setImageResource(listaDatos.get(position).getImagen());
+
 
 
     }
@@ -79,11 +82,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Numero
         }
 
         //onBindViewHolder es para que todas las vistas sean iguales, les pasa la misma vista a todos
-        void bind(String dato) {
-            textViewListaNumeros.setText(dato + "\t\t\t\t\t\t\t");
-            //aprender mas sobre linear layout
-
-        }
+//        void bind(String dato) {
+//            textViewListaNumeros.setText(dato + "\t\t\t\t\t\t\t");
+//            //aprender mas sobre linear layout
+//
+//        }
 
         @Override
         public void onClick(View v) {
